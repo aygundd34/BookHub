@@ -1,0 +1,162 @@
+/* Genel Ayarlar */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Playfair Display', sans-serif;
+    box-sizing: border-box;
+}
+
+/* About Sayfası */
+.about-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: rgb(255, 248, 240);
+    color: #3b4245;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    gap: 30px;
+}
+
+.navbar li {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.navbar li:hover {
+    color: #58779f;
+}
+
+/* Hero Bölümü */
+.about-hero {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./assets/about.jpg') no-repeat center center/cover;
+    color: white;
+    padding: 120px 20px;
+    text-align: center;
+    box-sizing: border-box;
+    background-size: cover;
+}
+
+.about-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-hero p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    font-weight: 300;
+}
+
+.cta-button {
+    background-color: #58779f;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #36454F;
+    transform: scale(1.05);
+}
+
+/* Özellikler Bölümü */
+.features {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    padding: 60px 20px;
+    background-color: #f7f7f7;
+}
+
+.feature-item {
+    text-align: center;
+    flex: 1;
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-item h3 {
+    font-size: 2rem;
+    color: #36454F;
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #2c2f30;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: auto;
+    font-size: 1rem;
+}
+
+/* Login ve Register Butonları */
+.navbar ul {
+    display: flex;
+    margin-left: auto;
+    gap: 30px;
+}
+
+.navbar li {
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-weight: bold;
+}
+
+.navbar li:hover {
+    color: #58779f;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}

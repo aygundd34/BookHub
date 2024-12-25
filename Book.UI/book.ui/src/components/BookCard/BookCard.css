@@ -1,0 +1,56 @@
+/* BookCard.css */
+
+/* Kart Stili */
+.card {
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 300px; /* Kart yüksekliğini sabitle */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* İçerik alanını eşit dağıt */
+    border-radius: 8px; /* Kenarları oval yap */
+    transition: transform 0.2s; /* Hover efekti için geçiş */
+}
+
+/* Kart Hover Efekti */
+.card:hover {
+    transform: scale(1.05); /* Hover efekti ile kartı büyüt */
+}
+
+/* Kitap Başlığı */
+.card h3 {
+    font-size: 1.5rem; /* Başlık boyutunu büyüt */
+    font-weight: bold; /* Başlık yazısını kalın yap */
+    color: #333; /* Başlık rengini koyu yap */
+    margin-bottom: 10px; /* Başlık ile içerik arasına boşluk ekle */
+}
+
+/* Yazar Adı */
+.card p {
+    font-size: 1rem; /* Yazar adı için daha küçük yazı boyutu */
+    color: #777; /* Yazar adı rengini gri yap */
+    margin: 5px 0; /* Yazar adı ile açıklama arasına boşluk ekle */
+}
+
+/* Açıklama */
+.card p:last-child {
+    font-size: 0.9rem; /* Açıklamayı biraz daha küçük yap */
+    color: #555; /* Açıklama rengini daha açık gri yap */
+}
+
+/* Buton Rengi (Eski) */
+.cta-button {
+    background-color: #007BFF; /* Mavi renk */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #0056b3; /* Hover efektiyle mavi rengini koyulaştır */
+}

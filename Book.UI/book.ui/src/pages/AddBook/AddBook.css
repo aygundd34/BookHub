@@ -1,0 +1,104 @@
+/* Genel Ayarlar */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Playfair Display', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Sayfa Genel Stili */
+.add-book-container {
+    max-width: 700px;
+    margin: 180px auto;
+    padding: 40px;
+    background-color: #9f9b9c;
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: #333;
+    /* Burada min-height: 100vh; kaldırıldı, container içeriği kadar yükseklik alacak */
+}
+
+/* Başlık stili */
+.add-book-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Input alanları */
+.add-book-container input,
+.add-book-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Odaklanınca input ve textarea stilini değiştir */
+.add-book-container input:focus,
+.add-book-container textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Sayfanın input türüne özgü stilleri */
+.add-book-container input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Submit Butonu */
+.add-book-container button {
+    width: 100%;
+    padding: 15px;
+    background-color: #58779f; /* Buton rengi Homepage ile uyumlu */
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Buton hover efekti */
+.add-book-container button:hover {
+    background-color: #465f74;
+}
+
+/* Hata mesajları */
+.add-book-container p {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+    .add-book-container {
+        padding: 20px;
+        margin: 30px 20px;
+    }
+
+    .add-book-container h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Footer - sayfa sonuna yayılacak şekilde dışarıya alındı */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: relative; /* Sayfa sonunda kalacak şekilde konumlandırıldı */
+    bottom: 0;
+}
+
+.footer p {
+    color: white;
+}

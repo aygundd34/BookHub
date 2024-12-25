@@ -1,0 +1,198 @@
+/* Genel Ayarlar */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Playfair Display', sans-serif;
+    box-sizing: border-box; /* Box modelini kapsama dahil ettik */
+}
+
+/* Ana Bileşen */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgb(255, 248, 240);
+    color: #3b4245;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    height: 60px; /* Logo boyutunu daha uygun hale getirdim */
+    width: auto;
+}
+
+/* Navbar Liste */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto; /* Sağ tarafa hizaladım */
+}
+
+.navbar li {
+    margin: 0 20px;
+    cursor: pointer;
+    font-weight: bold; /* Yazı kalınlığı */
+    transition: color 0.3s ease; /* Geçiş efekti */
+}
+
+.navbar li:hover {
+    color: #58779f; /* Hover rengini değiştirdim */
+}
+
+/* Hero Bölümü */
+.hero {
+    flex: 1;
+    background: linear-gradient(90deg, #36454F, #C0C0C0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Dikeyde ortalama */
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+    padding: 100px 20px; /* Hero bölümünün üst kısmını genişlettim */
+}
+
+.hero h2 {
+    font-size: 4rem; /* Başlık fontunu büyüttüm */
+    padding: 0px;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); /* Başlık için gölge ekledim */
+}
+
+/* İçerik Bölümü */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Book List Başlık */
+.book-list-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 120px;
+    margin-bottom: 40px;
+    color: black;
+}
+
+/* Books Sayfasındaki Kart Düzeni */
+/* Kitaplar Listesi */
+.book-list {
+    display: grid; /* Grid düzeni kullanıyoruz */
+    grid-template-columns: repeat(3, 1fr); /* Her satırda 3 kitap olacak şekilde kolonları ayarlıyoruz */
+    gap: 20px; /* Kitaplar arasındaki boşluk */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Responsive (Mobil uyumlu) tasarım için */
+@media (max-width: 1024px) {
+    .book-list {
+        grid-template-columns: repeat(2, 1fr); /* 1024px'den küçük ekranlarda 2 kitap */
+    }
+}
+
+@media (max-width: 600px) {
+    .book-list {
+        grid-template-columns: 1fr; /* 600px'den küçük ekranlarda 1 kitap */
+    }
+}
+
+/* Kart Stili */
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: auto; /* Kart yüksekliğini otomatik yaparak esnek hale getirdim */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* İçerik eşit dağılımı */
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s; /* Hover efekti */
+    margin: 10px; /* Kartlar arasında boşluk */
+}
+
+/* Hover efekti */
+.card:hover {
+    transform: scale(1.05); /* Kart büyütme */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hoverda gölgeyi büyüttüm */
+}
+
+/* Admin Butonları */
+.add-book-btn, .delete-btn, .update-btn {
+    padding: 12px 24px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+/* Ekleme Butonu */
+.add-book-btn {
+    background-color: #4CAF50; /* Yeşil, pozitif ekleme */
+}
+
+.add-book-btn:hover {
+    background-color: #45a049; /* Hoverda biraz daha koyu */
+}
+
+/* Silme Butonu */
+.delete-btn {
+    background-color: #afa3a2; /* Kırmızı, dikkat çekici */
+}
+
+.delete-btn:hover {
+    background-color: #675c5c; /* Hoverda daha koyu kırmızı */
+}
+
+/* Güncelleme Butonu */
+.update-btn {
+    background-color: #3a9898; /* Turuncu, dikkat çeken ama daha az tehlikeli */
+}
+
+.update-btn:hover {
+    background-color: #154d57; /* Hoverda daha koyu turuncu */
+}
+
+/* Butonların daha uyumlu olması için */
+.add-book-btn, .delete-btn, .update-btn {
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hoverda butonları büyütüp, daha fazla gölge ekleyelim */
+.add-book-btn:hover, .delete-btn:hover, .update-btn:hover {
+    transform: translateY(-3px); /* Hoverda buton biraz yükselsin */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Hoverda daha fazla gölge */
+}
+
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    margin-top: auto;
+    box-sizing: border-box;
+}

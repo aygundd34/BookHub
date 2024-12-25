@@ -1,0 +1,87 @@
+/* Login Sayfası */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(90deg, #36454F, #C0C0C0);
+}
+
+.login-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-form h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #2c2f30;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #58779f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.login-form button:hover {
+    background-color: #465f74;
+}
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #58779f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #465f74;
+}
+
+/* Logged-in info */
+.logged-in-info {
+    text-align: center;
+}
+
+.logged-in-info button {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.logged-in-info button:hover {
+    background-color: #e41f21;
+}

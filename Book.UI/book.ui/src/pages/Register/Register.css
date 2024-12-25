@@ -1,0 +1,158 @@
+/* Genel Ayarlar */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Playfair Display', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(255, 248, 240);
+    color: #3b4245;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    height: 80px;  /* Logo boyutunu büyütüyoruz */
+    margin-right: 10px;
+}
+
+.navbar h1 {
+    font-size: 24px;
+}
+
+/* Navbar Menü */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    gap: 20px;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+/* Kayıt Ol Sayfası */
+.register-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #36454F, #C0C0C0);
+    padding-top: 100px;
+}
+
+/* Kayıt Ol Formu */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+    position: relative; /* İçerik alanı için konum ayarı */
+}
+
+/* Kayıt Ol Formu */
+.register-form {
+    background-color: rgba(255, 255, 255, 0.7);  /* Beyaz alan şeffaf olacak şekilde */
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Kayıt Formu Başlığı */
+.register-form h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 32px;
+    color: #2c2f30;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Kayıt Ol Butonu */
+.register-button {
+    width: 100%;
+    padding: 10px;  /* Buton boyutunu ayarladık */
+    background-color: #58779f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;  /* Buton yazı boyutu */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #465f74;
+}
+
+.error-message {
+    color: red;
+    margin-bottom: 15px;
+}
+
+/* Giriş Yap Linki */
+.login-link {
+    margin-top: 20px; /* Kayıt ol butonunun altına biraz boşluk ekleyelim */
+    font-size: 16px;
+    text-align: center; /* Metni ortalamak için */
+}
+
+.login-link button {
+    color: #fff; /* Yazı rengi beyaz yapıldı */
+    background-color: #58779f; /* Giriş yap butonunun arka plan rengi */
+    padding: 6px 12px; /* Giriş yap butonunun padding'i */
+    border: none;
+    border-radius: 5px; /* Kenar yuvarlama */
+    cursor: pointer;
+    text-decoration: none; /* Altı çizgiyi kaldırdık */
+    font-size: 14px; /* Buton yazı boyutu */
+    transition: background-color 0.3s ease; /* Hover geçiş efekti */
+}
+
+.login-link button:hover {
+    background-color: #465f74; /* Hover durumunda arka plan rengi */
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+    flex-shrink: 0;
+}
