@@ -1,59 +1,78 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import BookCard from "../../components/BookCard/BookCard";
+import BookCard from '../../components/BookCard/BookCard';
 import './Books.css';
-import logo from "../../assets/BOOK HUB.png";
+import logo from '../../assets/BOOK HUB.png';
 import { useNavigate } from 'react-router-dom';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root'); // Modal için kök elemanı belirtin
 
 const Books = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [selectedBook, setSelectedBook] = useState(null);
     const navigate = useNavigate();
-    const role = localStorage.getItem('role'); // Kullanıcının rolünü alıyoruz
+    const user = JSON.parse(localStorage.getItem('user')); // Kullanıcı bilgilerini localStorage'dan al
+    const isAdmin = user?.role === 'admin'; // Kullanıcının admin olup olmadığını kontrol et
 
     useEffect(() => {
-        axios.get('http://localhost:5094/api/Books/getList')
-            .then(response => {
+        const fetchBooks = async () => {
+            try {
+                const response = await axios.get('http://localhost:5094/api/Books/getList');
                 setBooks(response.data);
+            } catch (error) {
+                console.error('Error fetching books:', error);
+            } finally {
                 setLoading(false);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                setLoading(false);
-            });
+            }
+        };
+
+        fetchBooks();
     }, []);
 
-    // Kitap ekleme işlemi
     const handleAddBook = () => {
-        if (role !== 'admin') {
-            alert('You do not have permission to add books');
-            return;
-        }
-        navigate('/add-book');
+        navigate('/add-book'); // Add Book sayfasına yönlendir
     };
 
-    // Kitap silme işlemi
-    const handleDeleteBook = async (bookId) => {
-        if (role !== 'admin') {
-            alert('You do not have permission to delete books');
+    const openModal = (book) => {
+        setSelectedBook(book);
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        setSelectedBook(null);
+    };
+
+    const handleDeleteBook = async () => {
+        if (!isAdmin) {
+            alert('You do not have permission to delete books.');
             return;
         }
+
         try {
-            await axios.delete(`http://localhost:5094/api/Books/${bookId}`);
-            setBooks(books.filter(book => book.id !== bookId)); // Silinen kitabı listeden çıkar
-            alert('Book deleted successfully');
+            const token = localStorage.getItem('token');
+            await axios.delete(`http://localhost:5094/api/Books/delete/${selectedBook.id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            setBooks(books.filter((book) => book.id !== selectedBook.id));
+            closeModal();
         } catch (err) {
-            alert('Error deleting book');
+            console.error('Error deleting book:', err.response || err.message);
+            alert('Error deleting book. Please check the console for more details.');
         }
     };
 
-    // Kitap güncelleme işlemi
     const handleUpdateBook = (bookId) => {
-        if (role !== 'admin') {
-            alert('You do not have permission to update books');
+        if (!isAdmin) {
+            alert('You do not have permission to update books.');
             return;
         }
-        navigate(`/update-book/${bookId}`);
+        navigate(`/update-book/${bookId}`); // UpdateBook sayfasına yönlendirin
     };
 
     if (loading) {
@@ -76,28 +95,49 @@ const Books = () => {
             <section className="hero">
                 <div className="content">
                     <h2 className="book-list-title">Books</h2>
-                    {role === 'admin' && (
-                        <button onClick={handleAddBook} className="add-book-btn">Add Book</button>
+                    {isAdmin && (
+                        <button onClick={handleAddBook} className="add-book-btn">
+                            Add Book
+                        </button>
                     )}
                     <div className="book-list">
-                        {books.map(book => (
+                        {books.map((book) => (
                             <div key={book.id} className="book-card">
                                 <BookCard book={book} />
-                                {role === 'admin' && (
-                                    <>
-                                        <button onClick={() => handleDeleteBook(book.id)} className="delete-btn">Delete</button>
-                                        <button onClick={() => handleUpdateBook(book.id)} className="update-btn">Update</button>
-                                    </>
+                                {isAdmin && (
+                                    <div className="admin-buttons">
+                                        <button onClick={() => openModal(book)} className="delete-btn">
+                                            Delete
+                                        </button>
+                                        <button onClick={() => handleUpdateBook(book.id)} className="update-btn">
+                                            Update
+                                        </button>
+                                    </div>
                                 )}
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
-
             <footer className="footer">
                 <p>© 2024 Book Hub. All rights reserved.</p>
             </footer>
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Confirm Delete"
+                className="modal"
+                overlayClassName="overlay"
+            >
+                <h2>Confirm Delete</h2>
+                <p>Are you sure you want to delete the book "{selectedBook?.title}"?</p>
+                <button onClick={handleDeleteBook} className="confirm-btn">
+                    Yes, Delete
+                </button>
+                <button onClick={closeModal} className="cancel-btn">
+                    Cancel
+                </button>
+            </Modal>
         </div>
     );
 };

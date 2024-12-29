@@ -44,3 +44,4 @@
 /home/dndygn/Desktop/BookHub/Book.API/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
 /home/dndygn/Desktop/BookHub/Book.API/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /home/dndygn/Desktop/BookHub/Book.API/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/home/dndygn/Desktop/BookHub/Book.API/obj/Debug/net8.0/Book.API.sourcelink.json

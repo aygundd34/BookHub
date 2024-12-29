@@ -7,7 +7,7 @@ html, body {
 }
 
 /* Sayfa Genel Stili */
-.add-book-page {
+.update-book-page {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -28,7 +28,7 @@ html, body {
 }
 
 .logo {
-    height: 60px; /* Logo boyutunu daha uygun hale getirdim */
+    height: 60px;
     width: auto;
 }
 
@@ -36,34 +36,34 @@ html, body {
 .navbar ul {
     list-style: none;
     display: flex;
-    margin-left: auto; /* Sağ tarafa hizaladım */
+    margin-left: auto;
 }
 
 .navbar li {
     margin: 0 20px;
     cursor: pointer;
-    font-weight: bold; /* Yazı kalınlığı */
-    transition: color 0.3s ease; /* Geçiş efekti */
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .navbar li:hover {
-    color: #58779f; /* Hover rengini değiştirdim */
+    color: #58779f;
 }
 
 /* Container */
-.add-book-container {
+.update-book-container {
     max-width: 700px;
-    margin: 180px auto; /* Header alanı dikkate alınarak margin ayarlandı */
+    margin: 180px auto;
     padding: 40px;
-    background-color: #858889; /* Mavi arka plan rengi */
+    background-color: #858889;
     border-radius: 8px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     color: #333;
-    flex: 1; /* Kalan alanı kaplaması için */
+    flex: 1;
 }
 
 /* Başlık stili */
-.add-book-container h1 {
+.update-book-container h1 {
     text-align: center;
     font-size: 2rem;
     color: #333;
@@ -71,8 +71,8 @@ html, body {
 }
 
 /* Input alanları */
-.add-book-container input,
-.add-book-container textarea {
+.update-book-container input,
+.update-book-container textarea {
     width: 100%;
     padding: 15px;
     margin: 15px 0;
@@ -83,22 +83,22 @@ html, body {
 }
 
 /* Odaklanınca input ve textarea stilini değiştir */
-.add-book-container input:focus,
-.add-book-container textarea:focus {
+.update-book-container input:focus,
+.update-book-container textarea:focus {
     border-color: #007bff;
     outline: none;
 }
 
 /* Sayfanın input türüne özgü stilleri */
-.add-book-container input[type="number"] {
+.update-book-container input[type="number"] {
     -moz-appearance: textfield;
 }
 
 /* Submit Butonu */
-.add-book-container button {
+.update-book-container button {
     width: 100%;
     padding: 15px;
-    background-color: #58779f; /* Buton rengi Homepage ile uyumlu */
+    background-color: #58779f;
     color: white;
     font-size: 1.1rem;
     border: none;
@@ -109,12 +109,12 @@ html, body {
 }
 
 /* Buton hover efekti */
-.add-book-container button:hover {
+.update-book-container button:hover {
     background-color: #465f74;
 }
 
 /* Hata mesajları */
-.add-book-container p {
+.update-book-container p {
     text-align: center;
     color: red;
     font-weight: bold;
@@ -122,12 +122,12 @@ html, body {
 
 /* Mobil uyumluluk */
 @media (max-width: 768px) {
-    .add-book-container {
+    .update-book-container {
         padding: 20px;
         margin: 30px 20px;
     }
 
-    .add-book-container h1 {
+    .update-book-container h1 {
         font-size: 1.8rem;
     }
 }

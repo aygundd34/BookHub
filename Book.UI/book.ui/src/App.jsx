@@ -7,7 +7,8 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Home from "./pages/HomePage/HomePage";
 import About from "./pages/About/About";
-import AddBook from "./pages/AddBook/AddBook"; 
+import AddBook from "./pages/AddBook/AddBook";
+import UpdateBook from './pages/UpdateBook/UpdateBook'; // UpdateBook bileşenini import edin
 
 const App = () => {
     const [user, setUser] = useState(null);
@@ -16,31 +17,31 @@ const App = () => {
         const token = localStorage.getItem('token');
         if (token) {
             try {
-                // JWT'den kullanıcı bilgilerini çöz
                 const userData = JSON.parse(atob(token.split('.')[1]));
                 setUser(userData);
             } catch (error) {
-                console.error("Geçersiz token:", error);
+                console.error('Invalid token:', error);
                 localStorage.removeItem('token');
             }
         }
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('token'); // Token'ı temizle
-        setUser(null); // Kullanıcı bilgisini sıfırla
+        localStorage.removeItem('token');
+        localStorage.removeItem('user'); // Kullanıcı bilgilerini localStorage'dan kaldır
+        setUser(null);
     };
 
     return (
         <Router>
-            {/* Navbar her sayfada yer alır */}
             <Navbar user={user} onLogout={handleLogout} />
             <Routes>
                 <Route path="/" element={<Home user={user} />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/books" element={<Books user={user} />} />
                 <Route path="/book/:id" element={<BookDetails user={user} />} />
-                <Route path="/add-book" element={<AddBook />} /> {/* Yeni route */}
+                <Route path="/add-book" element={<AddBook />} />
+                <Route path="/update-book/:bookId" element={<UpdateBook />} /> {/* UpdateBook rotasını ekleyin */}
                 <Route path="/login" element={<Login setUser={setUser} />} />
                 <Route path="/register" element={<Register setUser={setUser} />} />
             </Routes>

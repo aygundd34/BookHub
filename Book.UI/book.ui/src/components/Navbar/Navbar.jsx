@@ -9,9 +9,6 @@ const Navbar = ({ user, onLogout }) => {
     const handleGoHome = () => navigate('/');
     const handleGoAbout = () => navigate('/about');
     const handleGoBooks = () => navigate('/books');
-    const handleGoLogin = () => navigate('/login');
-    const handleGoRegister = () => navigate('/register');
-    const handleAdminPanel = () => navigate('/admin');
 
     return (
         <header className="navbar">
@@ -21,22 +18,6 @@ const Navbar = ({ user, onLogout }) => {
                     <li onClick={handleGoHome}>Home</li>
                     <li onClick={handleGoAbout}>About</li>
                     <li onClick={handleGoBooks}>Books</li>
-                </ul>
-            </nav>
-            <nav className="right-nav">
-                <ul>
-                    {user ? (
-                        <>
-                            <li>Welcome, {user.name || 'User'}</li>
-                            {user.role === 'admin' && <li onClick={handleAdminPanel}>Admin Panel</li>}
-                            <li onClick={onLogout}>Logout</li>
-                        </>
-                    ) : (
-                        <>
-                            <li onClick={handleGoLogin}>Login</li>
-                            <li onClick={handleGoRegister}>Register</li>
-                        </>
-                    )}
                 </ul>
             </nav>
         </header>

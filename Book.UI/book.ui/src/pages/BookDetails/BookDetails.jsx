@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './BookDetails.css';
-import logo from "../../assets/BOOK HUB.png";
+import logo from "../../assets/BOOK HUB.png"; // eğer assets klasörü src içinde ise
 import { FaHeart } from 'react-icons/fa'; // Kalp ikonu için
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root'); // Modal için kök elemanı belirtin
 
 const BookDetails = () => {
     const { id } = useParams();
@@ -13,6 +16,9 @@ const BookDetails = () => {
     const [error, setError] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false); // Kullanıcı giriş durumu
     const [isFavorited, setIsFavorited] = useState(false); // Kitap favoriye ekli mi?
+    const [modalIsOpen, setModalIsOpen] = useState(false); // Modal durumu
+    const [modalMessage, setModalMessage] = useState(''); // Modal mesajı
+    const [redirectToLogin, setRedirectToLogin] = useState(false); // Giriş yapma yönlendirmesi
 
     useEffect(() => {
         // Kullanıcı giriş durumu kontrolü
@@ -40,11 +46,20 @@ const BookDetails = () => {
 
     const handleFavorite = () => {
         if (!isLoggedIn) {
-            alert("Please log in to add to favorites.");
-            navigate('/login'); // Kullanıcıyı giriş sayfasına yönlendir
+            setModalMessage("Please log in to add to favorites.");
+            setRedirectToLogin(true);
+            setModalIsOpen(true); // Modal'ı aç
         } else {
             setIsFavorited(prevState => !prevState); // Favori ekleyip çıkarma
-            alert(isFavorited ? 'Removed from favorites' : 'Added to favorites');
+            setModalMessage(isFavorited ? 'Removed from favorites' : 'Added to favorites');
+            setModalIsOpen(true); // Modal'ı aç
+        }
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+        if (redirectToLogin) {
+            navigate('/login'); // Kullanıcıyı giriş sayfasına yönlendir
         }
     };
 
@@ -116,6 +131,19 @@ const BookDetails = () => {
             <footer className="footer">
                 <p>© 2024 Book Hub. All rights reserved.</p>
             </footer>
+
+            {/* Modal */}
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                contentLabel="Favorite Status"
+                className="modal"
+                overlayClassName="overlay"
+            >
+                <h2>{redirectToLogin ? 'Login Required' : 'Favorite Status'}</h2>
+                <p>{modalMessage}</p>
+                <button onClick={closeModal} className="confirm-btn">Ok</button>
+            </Modal>
         </div>
     );
 };
