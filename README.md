@@ -29,8 +29,6 @@ Book Hub, kullanıcıların kitapları görüntüleyebileceği, ekleyebileceği,
 - Kitap silme (Yalnızca admin kullanıcılar)
 - Kitapları favorilere ekleme ve favorilerden çıkarma (Kullanıcı girişi gerektirir)
 
-### Backend (ASP.NET)
-
 ## API Uç Noktaları
 
 - `GET /api/books`: Tüm kitapları listeler.
